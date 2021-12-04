@@ -1,0 +1,289 @@
+:root {
+  --link-color: rgb(51, 102, 204);
+  /* #36c */
+  --hover-color: rgb(51, 51, 51);
+  /* #333 */
+  --text-color: rgb(51, 51, 51);
+  /* #333 */
+  --body-bg-color: rgb(204, 204, 204);
+  /* #ccc */
+  --main-bg-color: rgb(238, 238, 238);
+  /* #eee */
+  --figure-bg-color: rgb(222, 222, 222);
+  /* #dedede */
+  --thead-color: rgb(255, 255, 255);
+  /* #fff */
+  --thead-bg-color: rgb(204, 204, 204);
+  /* #ccc */
+  --tbody-bg-color: rgb(221, 221, 221);
+  /* #ddd */
+  --list-bg-color: rgb(221, 221, 221);
+  /* #ddd */
+  /* figure hover */
+  --figcaption-hidden: rgba(238, 238, 238, 0);
+  --figcaption-visible: rgba(238, 238, 238, 1);
+  /* #eee */
+}
+
+a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+a:hover,
+a:focus {
+  color: var(--hover-color);
+}
+
+figure {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+  /* border-radius: .4rem; */
+}
+
+body {
+  margin: 0;
+  padding: 0.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: 1em system-ui;
+  color: var(--text-color);
+  background-color: var(--body-bg-color);
+  font-family: "Yanone Kaffeesatz", sans-serif;
+}
+
+/* Main Elements: header, main, footer */
+body > * {
+  width: 100%;
+  padding: 0.4em 1.2em;
+  background-color: var(--main-bg-color);
+}
+
+@media (min-width: 46em) {
+  body > * {
+    max-width: 46em;
+  }
+}
+
+body > header {
+  margin-bottom: 0.3em;
+  border-radius: 0.6rem 0.6rem 0 0;
+}
+
+body main {
+  margin: 0.3em 0;
+  padding-bottom: 1.6em;
+}
+
+body > footer {
+  margin-top: 0.3em;
+  text-align: center;
+  border-radius: 0 0 0.6rem 0.6rem;
+}
+
+/* page header */
+body > header dl {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body > header dl dt a,
+body > header dl dt span {
+  display: block;
+  padding: 0.2em 0.4em;
+  font-weight: 700;
+}
+
+body > header dl dd {
+  margin: 0;
+}
+
+body > header > dl dd:last-child {
+  flex: 100%;
+  padding-top: 0.8em;
+  text-align: right;
+  font-style: italic;
+}
+
+body > header > dl dd:last-child::before,
+body > header > dl dd:last-child::after {
+  content: '"';
+}
+
+/* site menu */
+body > header dl nav {
+  position: relative;
+}
+
+body > header dl button {
+}
+
+body > header dl ul {
+  position: absolute;
+  left: 110%;
+  top: 10%;
+  padding: 0 1.2em;
+  background-color: var(--main-bg-color);
+  border-radius: 0.4em;
+  box-shadow: 0.2em 0.2em 0.4em rgba(51, 51, 51, 0.4);
+  transition: max-height 1s;
+  overflow-y: hidden;
+  max-height: 0;
+}
+
+body > header dl input:checked + ul {
+  max-height: 8em;
+}
+
+body > header dl input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.01;
+  cursor: pointer;
+}
+
+body > header dl li a,
+body > header dl li strong {
+  display: block;
+  padding: 0.4em;
+  white-space: nowrap;
+}
+
+/* Article */
+article header p + p {
+  border-top: 1px solid var(--thead-bg-color);
+}
+
+/* Recipe List Teaser */
+article > ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+article > ul li {
+  margin-bottom: 1em;
+}
+
+article > ul figure {
+  padding: 0;
+  background-color: var(--figure-bg-color);
+}
+
+article ul figure > a,
+article ul figcaption {
+  display: block;
+  width: 100%;
+}
+
+article > ul figcaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1em;
+}
+
+@media (min-width: 40em) {
+  article > ul figure {
+    display: flex;
+  }
+
+  article > ul li:nth-child(even) figure {
+    flex-direction: row-reverse;
+  }
+
+  article ul figure > a,
+  article ul figcaption {
+    width: 50%;
+  }
+}
+
+/* Content Figure */
+article > figure {
+  position: relative;
+  overflow-y: hidden;
+}
+
+article > figure:hover figcaption {
+  top: 0;
+  color: rgba(33, 33, 33, 1);
+  background-color: var(--figcaption-visible);
+}
+
+article > figure figcaption {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding: 1em;
+  text-align: center;
+  color: rgba(33, 33, 33, 0);
+  background-color: var(--figcaption-hidden);
+  transition: top 0.5s, color 2s, background-color 1s;
+  /* transition: all 0.5s ease-out; */
+}
+
+/* Table */
+table {
+  width: 100%;
+}
+
+thead th,
+tbody td {
+  padding: 0.3em 0.6em;
+  vertical-align: top;
+  /* border-radius: .4rem; */
+}
+
+thead th {
+  text-align: left;
+  color: var(--thead-color);
+  background-color: var(--thead-bg-color);
+}
+
+tbody td {
+  border-top: 1px solid var(--thead-bg-color);
+  background-color: var(--tbody-bg-color);
+}
+
+/* Recipies Menu */
+aside {
+  margin-top: 1.5em;
+  border-top: 1px solid var(--thead-bg-color);
+}
+
+aside h2 {
+  text-align: center;
+  font-size: 1.1em;
+}
+
+aside ol {
+  margin: 0;
+  padding: 0.4em 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: var(--list-bg-color);
+}
+
+/* JavaScript toggle Class */
+tr.hover {
+  color: var(--figcaption-visible);
+}
+
+tr.hover td {
+  background-color: var(--link-color);
+}
